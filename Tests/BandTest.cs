@@ -35,7 +35,7 @@ namespace BandTracker
    }
 
    [Fact]
-    public void Test3_SaveBand()
+    public void Test9_SaveBand()
     {
       //Arrange
       Band testBand = new Band("Beatles");
@@ -50,7 +50,7 @@ namespace BandTracker
     }
 
     [Fact]
-   public void Test4_FindBand()
+   public void Test9_FindBand()
    {
      //Arrange
      Band testBand = new Band("Beatles");
@@ -61,6 +61,23 @@ namespace BandTracker
 
      //Assert
      Assert.Equal(testBand, foundBand);
+   }
+
+   [Fact]
+   public void Test10_SaveBandId()
+   {
+     //Arrange
+     Band testBand = new Band("Beatles");
+     testBand.Save();
+
+     //Act
+     Band savedBand = Band.GetAll()[0];
+
+     int result = savedBand.GetId();
+     int testId = testBand.GetId();
+
+     //Assert
+     Assert.Equal(testId, result);
    }
 
 
