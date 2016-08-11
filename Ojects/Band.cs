@@ -67,20 +67,48 @@ namespace BandTracker
      return allBands;
    }
 
-   public override bool Equals(System.Object otherBand)
-   {
-       if (!(otherBand is Band))
-       {
-         return false;
-       }
-       else
-       {
-         Band newBand = (Band) otherBand;
-         bool idEquality = this.GetId() == newBand.GetId();
-         bool nameEquality = this.GetName() == newBand.GetName();
-         return (idEquality && nameEquality);
-       }
-   }
+     public override bool Equals(System.Object otherBand)
+     {
+         if (!(otherBand is Band))
+         {
+           return false;
+         }
+         else
+         {
+           Band newBand = (Band) otherBand;
+           bool idEquality = this.GetId() == newBand.GetId();
+           bool nameEquality = this.GetName() == newBand.GetName();
+           return (idEquality && nameEquality);
+         }
+      }
 
+
+
+      public void Save()
+       {
+         SqlConnection conn = DB.Connection();
+         conn.Open();
+
+         SqlCommand cmd = new SqlCommand("INSERT INTO bands (name) OUTPUT INSERTED.id VALUES (@BandName);", conn);
+
+         SqlParameter nameParameter = new SqlParameter();
+         nameParameter.ParameterName = "@BandName";
+         nameParameter.Value = this.GetName();
+         cmd.Parameters.Add(nameParameter);
+         SqlDataReader rdr = cmd.ExecuteReader();
+
+         while(rdr.Read())
+         {
+           this._id = rdr.GetInt32(0);
+         }
+         if (rdr != null)
+         {
+           rdr.Close();
+         }
+         if(conn != null)
+         {
+           conn.Close();
+         }
+       }
   }
 }
