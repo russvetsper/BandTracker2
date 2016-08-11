@@ -103,13 +103,37 @@ namespace BandTracker
       Assert.Equal(testId, result);
     }
 
+    [Fact]
+ public void Test7_AddBandToVenue()
+ {
+   //Arrange
+   Venue testVenue = new Venue("Maxwel");
+   testVenue.Save();
+
+   Band testBand1 = new Band("Beatles");
+   testBand1.Save();
+
+   Band testBand2 = new Band("U2");
+   testBand2.Save();
+
+   //Act
+   testVenue.AddBand(testBand1);
+   testVenue.AddBand(testBand2);
+
+   List<Band> result = testVenue.GetBands();
+   List<Band> testList = new List<Band>{testBand1, testBand2};
+
+   //Assert
+   Assert.Equal(testList, result);
+ }
+
 
 
 
     public void Dispose()
     {
       Venue.DeleteAll();
-    
+      Band.DeleteAll();
     }
   }
 }

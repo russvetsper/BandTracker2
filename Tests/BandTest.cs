@@ -87,6 +87,7 @@ namespace BandTracker
     {
 
       Band.DeleteAll();
+      Venue.DeleteAll();
     }
   }
 }
