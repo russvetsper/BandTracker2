@@ -37,7 +37,7 @@ namespace BandTracker
 
 
     [Fact]
-     public void Test_Save_SaveVenue()
+     public void Test3_Save_SaveVenue()
      {
        //Arrange
        Venue testVenue = new Venue("Maxwel");
@@ -49,7 +49,21 @@ namespace BandTracker
 
        //Assert
        Assert.Equal(testList, result);
-     }  
+     }
+
+     [Fact]
+    public void Test4_FindVenue()
+    {
+      //Arrange
+      Venue testVenue = new Venue("Maxwel");
+      testVenue.Save();
+
+      //Act
+      Venue foundVenue = Venue.Find(testVenue.GetId());
+
+      //Assert
+      Assert.Equal(testVenue, foundVenue);
+    }
 
 
 
