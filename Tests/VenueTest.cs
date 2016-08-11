@@ -127,6 +127,28 @@ namespace BandTracker
    Assert.Equal(testList, result);
  }
 
+ [Fact]
+   public void Test8_ReturnsVenueBands()
+   {
+     //Arrange
+     Venue testVenue = new Venue("Maxwel");
+     testVenue.Save();
+
+     Band testBand1 = new Band("Beatles");
+     testBand1.Save();
+
+     Band testBand2 = new Band("U2");
+     testBand2.Save();
+
+     //Act
+     testVenue.AddBand(testBand1);
+     List<Band> savedBands = testVenue.GetBands();
+     List<Band> testList = new List<Band> {testBand1};
+
+     //Assert
+     Assert.Equal(testList, savedBands);
+   }
+
 
 
 
