@@ -23,6 +23,7 @@ namespace BandTracker
       Assert.Equal(0, result);
     }
 
+
     [Fact]
     public void Test2_SameName()
     {
@@ -33,6 +34,22 @@ namespace BandTracker
       //Assert
       Assert.Equal(firstVenue, secondVenue);
     }
+
+
+    [Fact]
+     public void Test_Save_SaveVenue()
+     {
+       //Arrange
+       Venue testVenue = new Venue("Maxwel");
+       testVenue.Save();
+
+       //Act
+       List<Venue> result = Venue.GetAll();
+       List<Venue> testList = new List<Venue>{testVenue};
+
+       //Assert
+       Assert.Equal(testList, result);
+     }  
 
 
 
