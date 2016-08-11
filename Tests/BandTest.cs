@@ -49,11 +49,27 @@ namespace BandTracker
       Assert.Equal(testList, result);
     }
 
+    [Fact]
+   public void Test4_FindBand()
+   {
+     //Arrange
+     Band testBand = new Band("Beatles");
+     testBand.Save();
+
+     //Act
+     Band foundBand = Band.Find(testBand.GetId());
+
+     //Assert
+     Assert.Equal(testBand, foundBand);
+   }
+
+
 
 
     public void Dispose()
     {
-      Venue.DeleteAll();
+
+      Band.DeleteAll();
     }
   }
 }
