@@ -104,7 +104,7 @@ namespace BandTracker
     }
 
     [Fact]
- public void Test7_AddBandToVenue()
+ public void Test7_AddVenueBand()
  {
    //Arrange
    Venue testVenue = new Venue("Maxwel");
