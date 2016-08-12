@@ -17,6 +17,10 @@ namespace BandTracker
         return View["venues.cshtml", AllVenues];
       };
 
+      Get["/venues/new"] = _ => {
+        return View["venues_form.cshtml"];
+      };
+
     }
   }
 }
