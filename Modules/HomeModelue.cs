@@ -59,6 +59,11 @@ namespace BandTracker
        return View["success.cshtml"];
      };
 
+     Get["/bands"] = _ => {
+       List<Band> AllBands = Band.GetAll();
+       return View["bands.cshtml", AllBands];
+     };
+
     }
   }
 }
