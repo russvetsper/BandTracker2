@@ -204,6 +204,7 @@ namespace BandTracker
       return venues;
     }
 
+
     public void Delete()
     {
       SqlConnection conn = DB.Connection();

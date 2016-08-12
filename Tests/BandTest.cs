@@ -14,7 +14,7 @@ namespace BandTracker
     }
 
     [Fact]
-   public void Test7_EmptyDatabase()
+   public void Test1_EmptyDatabase()
    {
      //Arrange, Act
      int result = Band.GetAll().Count;
@@ -24,7 +24,7 @@ namespace BandTracker
    }
 
    [Fact]
-   public void Test8_SameName()
+   public void Test2_SameName()
    {
      //Arrange, Act
      Band firstBand = new Band("Beatles");
@@ -35,7 +35,7 @@ namespace BandTracker
    }
 
    [Fact]
-    public void Test9_SaveBand()
+    public void Test3_SaveBand()
     {
       //Arrange
       Band testBand = new Band("Beatles");
@@ -50,7 +50,7 @@ namespace BandTracker
     }
 
     [Fact]
-   public void Test9_FindBand()
+   public void Test4_FindBand()
    {
      //Arrange
      Band testBand = new Band("Beatles");
@@ -64,7 +64,7 @@ namespace BandTracker
    }
 
    [Fact]
-   public void Test10_SaveBandId()
+   public void Test5_SaveBandId()
    {
      //Arrange
      Band testBand = new Band("Beatles");
@@ -81,7 +81,7 @@ namespace BandTracker
    }
 
    [Fact]
-    public void Test11_AddVenueToBand()
+    public void Test6_AddVenueToBand()
     {
       //Arrange
       Band testBand = new Band("Beatles");
@@ -101,7 +101,7 @@ namespace BandTracker
     }
 
     [Fact]
-    public void Test12_DeletesBand()
+    public void Test7_DeletesBand()
     {
       //Arrange
       Venue testVenue = new Venue("Maxwel");
@@ -120,6 +120,29 @@ namespace BandTracker
       //Assert
       Assert.Equal(testVenueBands, resultVenueBands);
     }
+
+    [Fact]
+      public void Test7_ReturnBandVenues()
+      {
+        //Arrange
+        Band testBand = new Band("Beatles");
+        testBand.Save();
+
+        Venue testVenue1 = new Venue("U2");
+        testVenue1.Save();
+
+        Venue testVenue2 = new Venue("Largo");
+        testVenue2.Save();
+
+        //Act
+        testBand.AddVenue(testVenue1);
+        List<Venue> result = testBand.GetVenues();
+        List<Venue> testList = new List<Venue> {testVenue1};
+
+        //Assert
+        Assert.Equal(testList, result);
+      }
+
 
 
 
