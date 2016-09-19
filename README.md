@@ -15,7 +15,7 @@ The Band Tracker app lets user keep track of bands , user can add , delete and l
 * GO
 * USE band_tracker;
 * GO
-* CREATE TABLE vanues (id INT IDENTITY(1,1), name VARCHAR(255));
+* CREATE TABLE venues (id INT IDENTITY(1,1), name VARCHAR(255));
 * CREATE TABLE bands (id INT IDENTITY(1,1), name VARCHAR(255));
 * CREATE TABLE venues_bands (id INT IDENTITY(1,1), venue_id INT, band_id INT);
 * GO
